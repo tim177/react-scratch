@@ -30,6 +30,10 @@ module.exports = {
           loader: "babel-loader", // Use Babel to transpile the code
         },
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
     ],
   },
 
