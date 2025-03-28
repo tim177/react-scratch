@@ -1,48 +1,49 @@
+// Import required modules
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  //Entry point for bundling - starting from index.tsx
+  // Entry point for bundling - starting from index.tsx
   entry: "./src/index.tsx",
 
-  //Output configuration - bundeled file goes to dist/bundle.js
+  // Output configuration - bundled file goes to dist/bundle.js
   output: {
     path: path.resolve(__dirname, "dist"), // Absolute path to dist folder
     filename: "bundle.js", // Name of the output file
   },
 
-  //Set mode to developement for debugging
+  // Set mode to development for debugging
   mode: "development",
 
-  //Resolve file extention for ts, tsx, jsx, js
+  // Resolve file extensions for TS, JSX, and JS
   resolve: {
-    extentions: [".tsx", ".jsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js"],
   },
 
-  //Module rules - define how file should be processed
+  // Module rules - Define how files should be processed
   module: {
     rules: [
       {
-        test: /\.(js|ts|tsx|jsx)$/,
-        exculde: /node_modules/, //skip node_module for better performance
+        test: /\.(js|jsx|ts|tsx)$/, // Match JS, TS, JSX, or TSX files
+        exclude: /node_modules/, // Skip node_modules for better performance
         use: {
-          loader: "babel-loader", //Use babel totranspile the file
+          loader: "babel-loader", // Use Babel to transpile the code
         },
       },
     ],
   },
 
-  //Plugins - Generate HTML and inject JS
+  // Plugins - Generate HTML and inject JS
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html", // Use the custom template
     }),
   ],
 
-  //Devserver configuration for local developement
+  // DevServer configuration for local development
   devServer: {
-    port: 3000,
-    static: "./dist",
-    hot: true, // Enable hot module replacement(HOT) for live relaoding
+    port: 3000, // Serve on localhost:3000
+    static: "./dist", // Serve from dist folder
+    hot: true, // Enable Hot Module Replacement (HMR) for live reloading
   },
 };

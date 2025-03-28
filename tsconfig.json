@@ -3,6 +3,8 @@
     "target": "ES6",
     "module": "CommonJS",
     "jsx": "react-jsx",
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
