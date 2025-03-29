@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { LoginForm } from "./login-form";
 import { RegisterForm } from "./register-form";
+import LoginForm from "./login-form";
 
 interface AuthFormsProps {
   onLoginSuccess: () => void;
 }
 
-export default function AuthForms({ onLoginSuccess }: AuthFormsProps) {
+export default function AuthForms() {
   const [activeTab, setActiveTab] = useState("login");
 
   return (
@@ -48,7 +48,7 @@ export default function AuthForms({ onLoginSuccess }: AuthFormsProps) {
 
         <div className="pt-4">
           {activeTab === "login" ? (
-            <LoginForm onSuccess={onLoginSuccess} />
+            <LoginForm />
           ) : (
             <RegisterForm onSuccess={() => setActiveTab("login")} />
           )}
